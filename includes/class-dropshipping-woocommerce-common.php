@@ -30,6 +30,7 @@ class Knawat_Dropshipping_Woocommerce_Common {
 		add_action( 'wp_ajax_knawat_dismiss_admin_notice', array( $this, 'knawat_dismiss_admin_notice' ) );
 		add_action( 'before_delete_post', array( $this, 'knawat_delete_product_on_mp' ) );
 		add_action( 'wp_trash_post', array( $this, 'knawat_show_notice_for_delete' ) );
+		add_action( 'add_meta_boxes_product', array($this, 'knawat_dropshipwc_add_metabox_update'));
 	}
 
 	/**
@@ -192,11 +193,12 @@ class Knawat_Dropshipping_Woocommerce_Common {
 	 */
 	public function knawat_dropshipwc_before_single_product(){
 		$product_id = get_the_ID();
+		error_log("ID: " . $product_id);
 		if( empty( $product_id ) ){
 			return;
 		}
 		// Update product
-		$this->knawat_dropshipwc_async_product_update_by_id( $product_id );
+		Knawat_Dropshipping_Woocommerce_Common:: knawat_dropshipwc_async_product_update_by_id( $product_id );
 	}
 
 	/**
@@ -416,6 +418,23 @@ class Knawat_Dropshipping_Woocommerce_Common {
 				knawat_set_notices($messages);
 			}
 		}
+	}
+	/**
+	 * Add Product update in product edit page
+	 * @return void.
+	 */
+	function knawat_dropshipwc_add_metabox_update(){
+		add_meta_box('knawatproduct_metabox',
+						__('Knawat Dropshipping', 'dropshipping-woocommerce'),
+						array($this, 'knawatproduct_render_metabox'),
+						'product',
+						'side',
+						'high'
+					);
+	}
+	function knawatproduct_render_metabox(){
+		include KNAWAT_DROPWC_PLUGIN_DIR . 'templates/products/edit_product.php';
+		knawatproduct_metabox();
 	}
 }
 
