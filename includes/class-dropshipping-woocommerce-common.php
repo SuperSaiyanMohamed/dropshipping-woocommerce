@@ -193,7 +193,6 @@ class Knawat_Dropshipping_Woocommerce_Common {
 	 */
 	public function knawat_dropshipwc_before_single_product(){
 		$product_id = get_the_ID();
-		error_log("ID: " . $product_id);
 		if( empty( $product_id ) ){
 			return;
 		}
@@ -240,7 +239,7 @@ class Knawat_Dropshipping_Woocommerce_Common {
 	 *
 	 * @since 2.0.0
 	 */
-	function knawat_dropshipwc_import_product_by_sku( $sku, $force_update = false ){
+	function knawat_dropshipwc_import_product_by_sku( $sku, $force_update = true ){
 		if( empty( $sku ) ){
 			return false;
 		}
@@ -424,13 +423,16 @@ class Knawat_Dropshipping_Woocommerce_Common {
 	 * @return void.
 	 */
 	function knawat_dropshipwc_add_metabox_update(){
-		add_meta_box('knawatproduct_metabox',
+		$product_id = get_the_ID();
+		if (knawat_dropshipwc_is_knawat_product($product_id)){
+			add_meta_box('knawatproduct_metabox',
 						__('Knawat Dropshipping', 'dropshipping-woocommerce'),
 						array($this, 'knawatproduct_render_metabox'),
 						'product',
 						'side',
 						'high'
 					);
+		}
 	}
 	function knawatproduct_render_metabox(){
 		include KNAWAT_DROPWC_PLUGIN_DIR . 'templates/products/edit_product.php';

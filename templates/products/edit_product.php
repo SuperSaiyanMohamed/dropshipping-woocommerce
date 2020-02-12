@@ -8,7 +8,7 @@
         <dev id="knawatproduct-metabox-content">
             <strong>Update Knawat Product</strong>
             <p>Warning: any changes made to the product will be overwritten</p>
-            <a class="button button-primary button-large" id="knawat-update">Update</a>
+            <a class="button button-secondary button-large" id="knawat-update">Get From Knawat</a>
             <script>
                 jQuery("#knawat-update").click(function (e) {
                     var x = window.location.href;
@@ -19,6 +19,16 @@
         </dev>
 <?php
         if (isset($_GET['knawat-update']) && $_GET['knawat-update'] == true){
-            Knawat_Dropshipping_Woocommerce_Common:: knawat_dropshipwc_before_single_product();
+            if (!isset($_GET['product-update'])){
+                Knawat_Dropshipping_Woocommerce_Common:: knawat_dropshipwc_before_single_product();
+                ?> <script>
+                        jQuery(document).ready(function(){
+                            var x = window.location.href;
+                            x+= '&product-update=finished';
+                            window.location.replace(x);
+                        });
+                    </script>
+                <?php
+            }
         }
     }
