@@ -66,7 +66,7 @@ class Knawat_Dropshipping_WC_Async_Request extends WP_Async_Request {
 		$sku = isset( $_POST['sku'] ) ? sanitize_text_field( $_POST['sku'] ) : '';
 		if( $sku != '' ){
 			global $knawat_dropshipwc;
-			$updated = $knawat_dropshipwc->common->knawat_dropshipwc_import_product_by_sku( $sku );
+			$updated = $knawat_dropshipwc->common->knawat_dropshipwc_import_product_by_sku( $sku , true );
 		}
 	}
 }

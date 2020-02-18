@@ -241,7 +241,7 @@ class Knawat_Dropshipping_Woocommerce_Common {
 	 *
 	 * @since 2.0.0
 	 */
-	function knawat_dropshipwc_import_product_by_sku( $sku, $force_update = true ){
+	function knawat_dropshipwc_import_product_by_sku( $sku, $force_update = false ){
 		if( empty( $sku ) ){
 			return false;
 		}
