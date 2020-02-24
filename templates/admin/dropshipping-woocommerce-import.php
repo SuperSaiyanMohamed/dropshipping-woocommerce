@@ -2,7 +2,7 @@
 // If this file is called directly, abort.
 if ( ! defined( 'ABSPATH' ) ) exit;
 ?>
-<div class="knawat_dropshipwc_import"> <?php knawatGoogleTagManager(); ?> </div>
+<div class="knawat_dropshipwc_import"> <?php knawatGoogleTagManager(); ?>
 <?php
 $consumer_keys = knawat_dropshipwc_get_consumerkeys();
 if( empty( $consumer_keys ) ){
