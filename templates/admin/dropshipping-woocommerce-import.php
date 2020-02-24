@@ -1,12 +1,13 @@
 <?php
 // If this file is called directly, abort.
 if ( ! defined( 'ABSPATH' ) ) exit;
-
+?>
+<div class="knawat_dropshipwc_import"> <?php knawatGoogleTagManager(); ?> </div>
+<?php
 $consumer_keys = knawat_dropshipwc_get_consumerkeys();
 if( empty( $consumer_keys ) ){
 	?>
 	<div class="knawat_dropshipwc_import">
-		<?php knawatGoogleTagManager(); ?>
 		<p>
 			<?php printf( __( 'Please insert Knawat Consumer Key and Consumer Secret in <a href="%s">Settings</a> tab.','dropshipping-woocommerce' ), esc_url( add_query_arg( 'tab', 'settings', admin_url('admin.php?page=knawat_dropship' ) ) ) ); ?></p>
 	</div>
@@ -16,7 +17,6 @@ if( empty( $consumer_keys ) ){
 	$knawat_options = knawat_dropshipwc_get_options();
 	$token_status = isset( $knawat_options['token_status'] ) ? esc_attr( $knawat_options['token_status'] ) : 'invalid';
 	?>
-	<div class="knawat_dropshipwc_import">
 		<?php knawatGoogleTagManager(); ?>
 
 		<h3><?php esc_attr_e( 'Product Import', 'dropshipping-woocommerce' ); ?></h3>
