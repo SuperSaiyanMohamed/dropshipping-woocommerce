@@ -437,7 +437,7 @@ class Knawat_Dropshipping_Woocommerce_Common {
 		}
 	}
 	function knawatproduct_render_metabox(){
-		include KNAWAT_DROPWC_PLUGIN_DIR . 'templates/products/edit_product.php';
+		include_once KNAWAT_DROPWC_PLUGIN_DIR . 'templates/products/edit_product.php';
 		knawatproduct_metabox();
 	}
 	function knawatproduct_after_loop($bulk_array){
