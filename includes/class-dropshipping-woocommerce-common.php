@@ -193,7 +193,7 @@ class Knawat_Dropshipping_Woocommerce_Common {
 	 *
 	 * @since 2.0.0
 	 */
-	public function knawat_dropshipwc_before_single_product(){
+	public static function knawat_dropshipwc_before_single_product(){
 		$product_id = get_the_ID();
 		if( empty( $product_id ) ){
 			return;
