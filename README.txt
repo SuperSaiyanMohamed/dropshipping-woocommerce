@@ -4,8 +4,8 @@ Tags: dropshipping, woocommerce, woocommerce dropshipping, dropship, woo dropshi
 Requires PHP: 5.3
 Requires at least: 4.0
 Tested up to: 5.3.2
-Stable tag: 2.0.7
-WC tested up to: 3.8.1
+Stable tag: 2.1.0
+WC tested up to: 3.9.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -60,6 +60,14 @@ Knawat WooCommerce DropShipping allows you to Add products to your WooCommerce s
 
 == Changelog ==
 
+= 2.1.0 =
+* ADDED: Can send notes along with orders to Knawat dashboard.
+* ADDED: Knawat categories gets added as product tags to existing products.
+* ADDED: Force update single product from Knawat in edit product page.
+* ADDED: Force update mutliple products from Knawat in all products page.
+* FIX: Parent child product issue.
+* FIX: Performance enhancement when creating new order.
+
 = 2.0.7 =
 * FIX: Product with only 1 variation gets added as a simple product instead of variation.
 
@@ -109,7 +117,7 @@ Knawat WooCommerce DropShipping allows you to Add products to your WooCommerce s
 * ADDED: Order splits based on Knawat and non-knawat product for better order handling.
 * ADDED: Dashboard widget for display Knawat status ( Sell and profit)
 * ADDED: Functionality for Multiple Dropshippers ( Local DS and Default DS)
-* ADDED: Knawat produc cost field in product variation edit screen
+* ADDED: Knawat product cost field in product variation edit screen
 * IMPROVEMENT: Some Improvements
 * FIXED: some bug fixes.
 
@@ -126,6 +134,9 @@ Knawat WooCommerce DropShipping allows you to Add products to your WooCommerce s
 == Frequently Asked Questions ==
 1. Q: How to contribute ?
     A: Please join us [here](https://github.com/Knawat/dropshipping-woocommerce)
+
+2. Q: How to contact us for an issue ?
+    A: Please open a new ticket [English](https://support.knawat.com/portal/newticket) [Arabic](https://support-ar.knawat.com/portal/newticket)
 
 == Upgrade Notice == 
 1.
