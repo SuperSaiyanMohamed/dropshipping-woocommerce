@@ -16,6 +16,7 @@ if( empty( $consumer_keys ) ){
 	$knawat_options = knawat_dropshipwc_get_options();
 	$token_status = isset( $knawat_options['token_status'] ) ? esc_attr( $knawat_options['token_status'] ) : 'invalid';
 	?>
+	<div class="knawat_dropshipwc_import">
 
 		<h3><?php esc_attr_e( 'Product Import', 'dropshipping-woocommerce' ); ?></h3>
 		<p><?php _e( 'Plugin auto import/update products from knawat.com in background on regular interval. But, if you want then you can manually start import.','dropshipping-woocommerce' ); ?></p>
