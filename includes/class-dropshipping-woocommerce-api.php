@@ -209,10 +209,6 @@ class Knawat_Dropshipping_Woocommerce_API {
 		$this->headers['Authorization'] = 'Bearer ' . $this->token;
 		$response = wp_remote_request( $url, array(
 			'method'  => 'PUT',
-<<<<<<< HEAD
-			'timeout' => 30,
-=======
->>>>>>> b9ad54b94c94a170d73d7d7eb5ecc935e3428c42
 			'body'	  => $data,
 			'timeout' => 30,
 			'headers' => $this->headers
@@ -253,10 +249,6 @@ class Knawat_Dropshipping_Woocommerce_API {
 		$this->headers['Authorization'] = 'Bearer ' . $this->token;
 		$response = wp_remote_request( $url, array(
 			'method'  => 'DELETE',
-<<<<<<< HEAD
-			'timeout' => 30,
-=======
->>>>>>> b9ad54b94c94a170d73d7d7eb5ecc935e3428c42
 			'body'	  => $data,
 			'timeout' => 30,
 			'headers' => $this->headers
