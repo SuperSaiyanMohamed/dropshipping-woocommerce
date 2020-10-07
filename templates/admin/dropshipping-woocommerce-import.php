@@ -2,19 +2,22 @@
 // If this file is called directly, abort.
 if ( ! defined( 'ABSPATH' ) ) exit;
 ?>
-<div class="knawat_dropshipwc_import"> <?php knawatGoogleTagManager();
-$consumer_keys = knawat_dropshipwc_get_consumerkeys();
-if( empty( $consumer_keys ) ){
+<div class="knawat_dropshipwc_import">
+	<?php 
+		knawatGoogleTagManager();
+		$consumer_keys = knawat_dropshipwc_get_consumerkeys();
+		if( empty( $consumer_keys ) ){
 	?>
 	<div class="knawat_dropshipwc_import">
 		<p>
 			<?php printf( __( 'Please insert Knawat Consumer Key and Consumer Secret in <a href="%s">Settings</a> tab.','dropshipping-woocommerce' ), esc_url( add_query_arg( 'tab', 'settings', admin_url('admin.php?page=knawat_dropship' ) ) ) ); ?></p>
 	</div>
 	<?php
-}else{
-	$batches = knawat_dropshipwc_get_inprocess_import();
-	$knawat_options = knawat_dropshipwc_get_options();
-	$token_status = isset( $knawat_options['token_status'] ) ? esc_attr( $knawat_options['token_status'] ) : 'invalid';
+		}
+		else{
+			$batches = knawat_dropshipwc_get_inprocess_import();
+			$knawat_options = knawat_dropshipwc_get_options();
+			$token_status = isset( $knawat_options['token_status'] ) ? esc_attr( $knawat_options['token_status'] ) : 'invalid';
 	?>
 	<div class="knawat_dropshipwc_import">
 
@@ -80,19 +83,19 @@ if( empty( $consumer_keys ) ){
 		</table>
 	</div>
 	<?php
-}
-function knawatGoogleTagManager(){
-	?>
-	<!-- Google Tag Manager -->
-	<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-		new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-		j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-		'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-		})(window,document,'script','dataLayer','GTM-XXXX');</script>
-		<!-- End Google Tag Manager -->
-		<!-- Google Tag Manager (noscript) -->
-		<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-XXXX"
-		height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-		<!-- End Google Tag Manager (noscript) -->
-	<?php
-}
+		}
+	function knawatGoogleTagManager(){
+		?>
+		<!-- Google Tag Manager -->
+		<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+			new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+			j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+			'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+			})(window,document,'script','dataLayer','GTM-PGD82MQ');</script>
+			<!-- End Google Tag Manager -->
+			<!-- Google Tag Manager (noscript) -->
+			<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PGD82MQ"
+			height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+			<!-- End Google Tag Manager (noscript) -->
+		<?php
+	}
