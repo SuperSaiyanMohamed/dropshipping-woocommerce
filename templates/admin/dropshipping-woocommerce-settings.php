@@ -11,6 +11,13 @@ $token_status        = isset( $knawat_options['token_status'] ) ? esc_attr( $kna
 $product_batch       = isset( $knawat_options['product_batch'] ) ? esc_attr( $knawat_options['product_batch'] ) : 25;
 $categorize_products = isset( $knawat_options['categorize_products'] ) ? esc_attr( $knawat_options['categorize_products'] ) : 'no';
 $dokan_seller        = isset( $knawat_options['dokan_seller'] ) ? esc_attr( $knawat_options['dokan_seller'] ) : - 1;
+$knawat_options['last_imported'] = get_option('knawat_last_imported', false);
+$last_update = isset($knawat_options['last_imported']) ? intval(esc_attr( $knawat_options['last_imported'] )) * 1000 : 0;
+$reset_time = 1483300000000;
+if ($token_status === 'valid'){
+	$products_synced = knawat_dropshipwc_get_products_count($last_update);
+	$products_count = knawat_dropshipwc_get_products_count($reset_time);
+}
 ?>
 <div class="knawat_dropshipwc_settings">
 
@@ -187,4 +194,29 @@ $dokan_seller        = isset( $knawat_options['dokan_seller'] ) ? esc_attr( $kna
             <input type="submit" class="button-primary knawatds_submit_button" style="" value="<?php esc_attr_e( 'Save Settings', 'dropshipping-woocommerce' ); ?>"/>
         </div>
     </form>
+    <?php
+		if ($token_status === 'valid'){	?>
+			<form method="post" id="knawatds_reset_form">
+				<table class="form-table">
+					<tbody>
+						<tr class="knawat_dropshipwc_row">
+							<th scope="row">
+								<?php _e( 'Products Synced', 'dropshipping-woocommerce' ); ?>
+							</th>
+							<td>
+								<meter id="last-update-knawat" value="<?php echo $products_count-$products_synced; ?>" min="0" max="<?php echo $products_count; ?>" style="height: 35px; width: 815px;"></meter>
+								<p> <?php esc_attr_e( 'You have ' . $products_count . ' product(s) from Knawat, ' . ($products_count-$products_synced) . ' of them are up to date. If some of your products didn\'t get updated, you may need to Sync All, but it\'ll take a few hours maybe days to update all prices and stock.', 'dropshipping-woocommerce' ); ?></p>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+				<div class="knawatds_element submit_button">
+					<input type="hidden" name="knawatds_reset_action" value="knawatds_reset_sync" />
+					<?php wp_nonce_field( 'knawatds_setting_form_nonce_reset_action', 'knawatds_setting_form_reset_nonce'); ?>
+					<input type="submit" class="button-primary knawatds_submit_button" value="<?php esc_attr_e( 'Reset Sync', 'dropshipping-woocommerce' ); ?>" />
+				</div>
+			</form>
+			<?php
+		}
+	?>
 </div>

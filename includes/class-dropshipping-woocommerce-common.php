@@ -186,6 +186,12 @@ class Knawat_Dropshipping_Woocommerce_Common {
 			do_action( 'knawat_dropshipwc_validate_access_token' );
 			$knawatdswc_success[] = __( 'Settings has been saved successfully.', 'dropshipping-woocommerce' );
 		}
+		if ( isset( $_POST['knawatds_reset_action']) && $_POST['knawatds_reset_action'] == 'knawatds_reset_sync' ) {
+			check_admin_referer ('knawatds_setting_form_nonce_reset_action', 'knawatds_setting_form_reset_nonce');
+			update_option( 'knawat_last_imported', '1483300000000');
+			do_action( 'knawat_dropshipwc_validate_access_token' );
+			$knawatdswc_success[] = __( 'Sync has been reset successfully.', 'dropshipping-woocommerce' );
+		}
 	}
 
 	/**
@@ -573,6 +579,19 @@ function knawat_dropshipwc_get_activated_plugins() {
 	}
 
 	return $active_plugins;
+}
+
+/**
+ * Get Total Number of Products with specific timestamp
+ * 
+ * @return int $products_count The total number of products
+ */
+function knawat_dropshipwc_get_products_count( $timestamp ){
+	// MP request to get total count of synced products with $timestamp
+	$mp_api = new Knawat_Dropshipping_Woocommerce_API();
+	$data = $mp_api->get('catalog/products?limit=10&page=1&hideOutOfStock=1&lastupdate=' . $timestamp);
+	$products_count = $data->total;
+	return $products_count;
 }
 
 /**
