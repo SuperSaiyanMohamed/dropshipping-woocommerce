@@ -362,6 +362,7 @@ if ( class_exists( 'WC_Product_Importer', false ) ) :
 			}
 			$knawat_options      = knawat_dropshipwc_get_options();
 			$categorize_products = isset( $knawat_options['categorize_products'] ) ? esc_attr( $knawat_options['categorize_products'] ) : 'no';
+			$tagging_products = isset( $knawat_options['tagging_products'] ) ? esc_attr( $knawat_options['tagging_products'] ) : 'no';
 			$new_product['tags'] = array();
 			$cat_id              = null;
 			$tag = '';
@@ -425,7 +426,9 @@ if ( class_exists( 'WC_Product_Importer', false ) ) :
 					unset( $tag );
 				}
 			}
-			wp_set_object_terms( ! empty( $new_product['id'] ) ? $new_product['id'] : 0, $new_product['tags'], 'product_tag', true );
+			if ($tagging_products === 'yes'){
+				wp_set_object_terms( ! empty( $new_product['id'] ) ? $new_product['id'] : 0, $new_product['tags'], 'product_tag', true );
+			}
 
 			$variations     = array();
 			$var_attributes = array();

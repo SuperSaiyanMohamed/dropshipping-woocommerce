@@ -172,6 +172,14 @@ class Knawat_Dropshipping_Woocommerce_Common {
 				}
 			}
 
+			if ( isset( $knawatds_options['tagging_products'] ) ) {
+				if ( $knawatds_options['tagging_products'] == 'yes' ) {
+					$current_options['tagging_products'] = 'yes';
+				} else {
+					$current_options['tagging_products'] = 'no';
+				}
+			}
+
 			if ( isset( $knawatds_options['dokan_seller'] ) && is_numeric( $knawatds_options['dokan_seller'] ) ) {
 				$current_options['dokan_seller'] = sanitize_text_field( $knawatds_options['dokan_seller'] );
 			}

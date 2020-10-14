@@ -10,6 +10,7 @@ $mp_consumer_secret  = isset( $knawat_options['mp_consumer_secret'] ) ? esc_attr
 $token_status        = isset( $knawat_options['token_status'] ) ? esc_attr( $knawat_options['token_status'] ) : 'invalid';
 $product_batch       = isset( $knawat_options['product_batch'] ) ? esc_attr( $knawat_options['product_batch'] ) : 25;
 $categorize_products = isset( $knawat_options['categorize_products'] ) ? esc_attr( $knawat_options['categorize_products'] ) : 'no';
+$tagging_products = isset( $knawat_options['tagging_products'] ) ? esc_attr( $knawat_options['tagging_products'] ) : 'no';
 $dokan_seller        = isset( $knawat_options['dokan_seller'] ) ? esc_attr( $knawat_options['dokan_seller'] ) : - 1;
 ?>
 <div class="knawat_dropshipwc_settings">
@@ -86,6 +87,23 @@ $dokan_seller        = isset( $knawat_options['dokan_seller'] ) ? esc_attr( $kna
                     <p class="description" id="product_batch-description">
 						<?php
 						_e( 'Select yes to fetch product categories', 'dropshipping-woocommerce' );
+						?>
+                    </p>
+                </td>
+            </tr>
+
+            <tr class="knawat_dropshipwc_row">
+                <th scope="row">
+					<?php _e( 'Tagging Products', 'dropshipping-woocommerce' ); ?>
+                </th>
+                <td>
+                    <select name="knawat[tagging_products]" required="required">
+                        <option value="no" <?php selected( 'no', $tagging_products, true ) ?>><?php esc_html_e('No'); ?></option>
+                        <option value="yes" <?php selected( 'yes', $tagging_products, true ) ?>><?php esc_html_e('Yes'); ?></option>
+                    </select>
+                    <p class="description" id="product_tag-description">
+						<?php
+						_e( 'Select yes to fetch product categories as tags', 'dropshipping-woocommerce' );
 						?>
                     </p>
                 </td>
