@@ -11,10 +11,32 @@ $token_status        = isset( $knawat_options['token_status'] ) ? esc_attr( $kna
 $product_batch       = isset( $knawat_options['product_batch'] ) ? esc_attr( $knawat_options['product_batch'] ) : 25;
 $categorize_products = isset( $knawat_options['categorize_products'] ) ? esc_attr( $knawat_options['categorize_products'] ) : 'no';
 $dokan_seller        = isset( $knawat_options['dokan_seller'] ) ? esc_attr( $knawat_options['dokan_seller'] ) : - 1;
+
+/**
+ * Function to call the google tag manager script.
+ *
+ * @return void
+ */
+function knawatGoogleTagManager(){
+	?>
+	<!-- Google Tag Manager -->
+	<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+		new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+		j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+		'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+		})(window,document,'script','dataLayer','GTM-PGD82MQ');</script>
+		<!-- End Google Tag Manager -->
+		<!-- Google Tag Manager (noscript) -->
+		<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-PGD82MQ"
+		height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+		<!-- End Google Tag Manager (noscript) -->
+	<?php
+}
 ?>
 <div class="knawat_dropshipwc_settings">
 
     <h3><?php esc_attr_e( 'Settings', 'dropshipping-woocommerce' ); ?></h3>
+    <?php knawatGoogleTagManager(); ?>
     <p style="margin: 0px;"><strong><?php _e( 'Note: Only orders in Processing status will be sent to Knawat to processs.', 'dropshipping-woocommerce' ); ?></strong></p>
     <p style="margin: 0px;"><?php _e( 'You need a Knawat consumer key and consumer secret for import products into your store from knawat.com', 'dropshipping-woocommerce' ); ?></p>
     <form method="post" id="knawatds_setting_form">
