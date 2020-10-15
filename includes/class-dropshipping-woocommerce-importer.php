@@ -283,7 +283,7 @@ if ( class_exists( 'WC_Product_Importer', false ) ) :
 
 			if ( ! $product_id || $this->params['force_update'] ) {
 
-				if ( isset( $product->variations ) && ! empty( $product->variations ) ) {
+				if ( isset( $product->variations ) && ! empty( $product->variations ) && ($product->sku != $product->variations[0]->sku)) {
 					$new_product['type'] = 'variable';
 				}
 				$new_product['name']        = isset( $product->name->$default_lang ) ? sanitize_text_field( $product->name->$default_lang ) : '';
