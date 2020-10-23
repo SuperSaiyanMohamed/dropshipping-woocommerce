@@ -165,18 +165,18 @@ class Knawat_Dropshipping_Woocommerce_Common {
 			}
 
 			if ( isset( $knawatds_options['categorize_products'] ) ) {
-				if ( $knawatds_options['categorize_products'] == 'yes' ) {
-					$current_options['categorize_products'] = 'yes';
+				if ( $knawatds_options['categorize_products'] == 'true' ) {
+					$current_options['categorize_products'] = 'true';
 				} else {
-					$current_options['categorize_products'] = 'no';
+					$current_options['categorize_products'] = 'false';
 				}
 			}
 
 			if ( isset( $knawatds_options['tagging_products'] ) ) {
-				if ( $knawatds_options['tagging_products'] == 'yes' ) {
-					$current_options['tagging_products'] = 'yes';
+				if ( $knawatds_options['tagging_products'] == 'true' ) {
+					$current_options['tagging_products'] = 'true';
 				} else {
-					$current_options['tagging_products'] = 'no';
+					$current_options['tagging_products'] = 'false';
 				}
 			}
 

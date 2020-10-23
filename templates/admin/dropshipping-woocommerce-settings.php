@@ -9,8 +9,8 @@ $mp_consumer_key     = isset( $knawat_options['mp_consumer_key'] ) ? esc_attr( $
 $mp_consumer_secret  = isset( $knawat_options['mp_consumer_secret'] ) ? esc_attr( $knawat_options['mp_consumer_secret'] ) : '';
 $token_status        = isset( $knawat_options['token_status'] ) ? esc_attr( $knawat_options['token_status'] ) : 'invalid';
 $product_batch       = isset( $knawat_options['product_batch'] ) ? esc_attr( $knawat_options['product_batch'] ) : 25;
-$categorize_products = isset( $knawat_options['categorize_products'] ) ? esc_attr( $knawat_options['categorize_products'] ) : 'no';
-$tagging_products = isset( $knawat_options['tagging_products'] ) ? esc_attr( $knawat_options['tagging_products'] ) : 'no';
+$categorize_products = isset( $knawat_options['categorize_products'] ) ? esc_attr( $knawat_options['categorize_products'] ) : 'false';
+$tagging_products = isset( $knawat_options['tagging_products'] ) ? esc_attr( $knawat_options['tagging_products'] ) : 'false';
 $dokan_seller        = isset( $knawat_options['dokan_seller'] ) ? esc_attr( $knawat_options['dokan_seller'] ) : - 1;
 ?>
 <div class="knawat_dropshipwc_settings">
@@ -81,8 +81,8 @@ $dokan_seller        = isset( $knawat_options['dokan_seller'] ) ? esc_attr( $kna
                 </th>
                 <td>
                     <select name="knawat[categorize_products]" required="required">
-                        <option value="no" <?php selected( 'no', $categorize_products, true ) ?>><?php esc_html_e('No'); ?></option>
-                        <option value="yes" <?php selected( 'yes', $categorize_products, true ) ?>><?php esc_html_e('Yes'); ?></option>
+                        <option value="false" <?php selected( 'false', $categorize_products, true ) ?>><?php esc_html_e('No'); ?></option>
+                        <option value="true" <?php selected( 'true', $categorize_products, true ) ?>><?php esc_html_e('Yes'); ?></option>
                     </select>
                     <p class="description" id="product_batch-description">
 						<?php
@@ -98,8 +98,8 @@ $dokan_seller        = isset( $knawat_options['dokan_seller'] ) ? esc_attr( $kna
                 </th>
                 <td>
                     <select name="knawat[tagging_products]" required="required">
-                        <option value="no" <?php selected( 'no', $tagging_products, true ) ?>><?php esc_html_e('No'); ?></option>
-                        <option value="yes" <?php selected( 'yes', $tagging_products, true ) ?>><?php esc_html_e('Yes'); ?></option>
+                        <option value="false" <?php selected( 'false', $tagging_products, true ) ?>><?php esc_html_e('No'); ?></option>
+                        <option value="true" <?php selected( 'true', $tagging_products, true ) ?>><?php esc_html_e('Yes'); ?></option>
                     </select>
                     <p class="description" id="product_tag-description">
 						<?php

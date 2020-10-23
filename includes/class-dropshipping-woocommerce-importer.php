@@ -361,8 +361,8 @@ if ( class_exists( 'WC_Product_Importer', false ) ) :
 				}
 			}
 			$knawat_options      = knawat_dropshipwc_get_options();
-			$categorize_products = isset( $knawat_options['categorize_products'] ) ? esc_attr( $knawat_options['categorize_products'] ) : 'no';
-			$tagging_products = isset( $knawat_options['tagging_products'] ) ? esc_attr( $knawat_options['tagging_products'] ) : 'no';
+			$categorize_products = isset( $knawat_options['categorize_products'] ) ? esc_attr( $knawat_options['categorize_products'] ) : 'false';
+			$tagging_products = isset( $knawat_options['tagging_products'] ) ? esc_attr( $knawat_options['tagging_products'] ) : 'false';
 			$new_product['tags'] = array();
 			$cat_id              = null;
 			$tag = '';
@@ -377,7 +377,7 @@ if ( class_exists( 'WC_Product_Importer', false ) ) :
 						$tag .= '[:]';
 					}
 
-					if ( $categorize_products == 'yes' ) {
+					if ( $categorize_products == 'true' ) {
 						$term = term_exists( sanitize_title( $tag ), 'product_cat' );
 						if ( $term === 0 && $term === null ) {
 							if ( $cat_id ) {
@@ -403,7 +403,7 @@ if ( class_exists( 'WC_Product_Importer', false ) ) :
 				foreach ( $product->categories as $category ) {
 					$tag .= isset( $category->name->$default_lang ) ? sanitize_text_field( $category->name->$default_lang ) : '';
 
-					if ( $categorize_products == 'yes' ) {
+					if ( $categorize_products == 'true' ) {
 						$term = term_exists( sanitize_title( $tag ), 'product_cat' );
 						if ( $term === 0 && $term === null ) {
 							if ( $cat_id ) {
@@ -426,7 +426,7 @@ if ( class_exists( 'WC_Product_Importer', false ) ) :
 					unset( $tag );
 				}
 			}
-			if ($tagging_products === 'yes'){
+			if ($tagging_products === 'true'){
 				wp_set_object_terms( ! empty( $new_product['id'] ) ? $new_product['id'] : 0, $new_product['tags'], 'product_tag', true );
 			}
 
